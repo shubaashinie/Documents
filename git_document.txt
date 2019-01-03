@@ -1,0 +1,76 @@
+Basic Git commands
+
+1)Tell Git who you are
+  1)git config --global user.name "Sam Smith"
+  2)git config --global user.email sam@example.com     #Configure the author name and email address to be used with your commits.
+Note that Git strips some characters (for example trailing periods) from user.name
+
+
+2)Create a new local repository
+1)git init 
+
+3)Check out a repository
+ 1)git clone /path/to/repository   #Create a working copy of a local repository:
+ 2)git clone username@host:/path/to/repository   #For a remote server, use
+
+4)Add files
+1)git add <filename> # to add one file to index
+2)git add -A     #to add one or morefiles
+
+5)Commit
+1)git commit -m "Commit message"  #(for single file commit) Commit changes to head (but not yet to the remote repository)
+2)git commit -a -m  #to commit all files
+3)git commit -a     #Commit any files you've added with git add, and also commit any files you've changed since then
+
+
+6)Push
+1)git push origin master   #Send changes to the master branch of your remote repository
+
+
+7)Status
+   1)git status   #List the files you've changed and those you still need to add or commit
+
+8)Connect to a remote repository
+   1)git remote add origin <server link address>   #If you haven't connected your local repository to a remote server, add the server to be able to push to it
+    2)git remote -v   #List all currently configured remote repositories
+
+9)Branches
+  1)git checkout -b <branchname>  #Create a new branch and switch to it
+  2)git checkout <branchname>   #Switch from one branch to another
+  3)git branch   #List all the branches in your repo, and also tell you what branch you're currently in
+  4)git branch -d <branchname>  #Delete the feature branch
+  5)git push origin <branchname>  #Push the branch to your remote repository, so others can use it
+  6)git push --all origin    #Push all branches to your remote repository
+  7)git push origin :<branchname>  #Delete a branch on your remote repository
+ 
+10)Update from the remote repository
+ 1)git pull origin master    #Fetch and merge changes on the remote server to your working directory
+ 2)git merge <branchname>   #To merge a different branch into your active branch
+ 3)git diff
+  git diff --base <filename>
+
+   git diff <sourcebranch> <targetbranch>  #View all the merge conflicts:
+      View the conflicts against the base file:
+        Preview changes, before merging
+ 4)git add <filename>  #After you have manually resolved any conflicts, you mark the changed file
+
+10)INSPECT & COMPARE    #Examining logs, diffs and object information
+     1)git log  #CommitId is the leading characters of the changeset ID, up to 10, but must be unique. Get the ID using.show all commits in the current branch’s history
+     2)git log branchB..branchA     #show the commits on branchA that are not on branchB
+     3)git log --follow [file]     #show the commits that changed file, even across renames
+     4)git diff branchB...branchA     #show the diff of what is in branchA that is not in branchB
+     5)git show [SHA]  #show any object in Git in human-readable format. simply list the files that changed as part of the commit 
+
+11)REWRITE HISTORY  #Rewriting branches, updating commits and clearing history
+ 1)git rebase [branch] #apply any commits of current branch ahead of specified one
+  2)git reset --hard [commit]   #clear staging area, rewrite working tree from specified commit
+
+12)TEMPORARY COMMITS   #Temporarily store modified, tracked files in order to change branches
+ 1)git stash       #Save modified and staged changes
+ 2)git stash list  #list stack-order of stashed file changes
+ 3)git stash pop #write working from top of stash stack
+ 4)git stash drop #discard the changes from top of stash stack
+5)git stash apply  #back to index
+
+
+
